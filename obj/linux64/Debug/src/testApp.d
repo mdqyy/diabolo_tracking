@@ -365,7 +365,23 @@ obj/linux64/Debug/src/testApp.o: src/testApp.cpp src/testApp.h \
  ../../../addons/ofxOpenCv/src/ofxCvFloatImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvShortImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h \
- ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h
+ ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h \
+ ../../../addons/ofxOsc/src/ofxOsc.h \
+ ../../../addons/ofxOsc/src/ofxOscArg.h \
+ ../../../addons/ofxOsc/src/ofxOscMessage.h \
+ ../../../addons/ofxOsc/src/ofxOscSender.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscException.h \
+ ../../../addons/ofxOsc/src/ofxOscBundle.h \
+ ../../../addons/ofxOsc/src/ofxOscReceiver.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/osc/../ip/PacketListener.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h \
+ ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h
 
 src/testApp.h:
 
@@ -1134,3 +1150,35 @@ src/testApp.h:
 ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h:
 
 ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h:
+
+../../../addons/ofxOsc/src/ofxOsc.h:
+
+../../../addons/ofxOsc/src/ofxOscArg.h:
+
+../../../addons/ofxOsc/src/ofxOscMessage.h:
+
+../../../addons/ofxOsc/src/ofxOscSender.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscTypes.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscException.h:
+
+../../../addons/ofxOsc/src/ofxOscBundle.h:
+
+../../../addons/ofxOsc/src/ofxOscReceiver.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscPacketListener.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/osc/../ip/PacketListener.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h:
+
+../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h:

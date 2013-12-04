@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
+#include "ofxOsc.h"
 
 class color
 {
@@ -36,6 +37,10 @@ class testApp : public ofBaseApp{
 
     ofxCvContourFinder      finderRed;                  //contour finder, very handy
 
+    // Osc
+    ofxOscSender sender;
+    ofxOscMessage message;
+
 	public:
 		void setup();
 		void update();
@@ -51,6 +56,4 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-    /*private:
-        ofxCvImage getMask(unsigned char * pixels);*/
 };

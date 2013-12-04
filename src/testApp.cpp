@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    //sender = new ofxOscSender;
+    sender.setup("192.168.0.14", 12000);
+
     one.pos = ofVec2f(0,0);
 
     camWidth 		= 320;	// try to grab at this size.
@@ -97,6 +100,10 @@ void testApp::draw(){
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
         char tempStr1[255];
         sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
+        message.addFloatArg(finderRed.blobs[0].centroid.x);
+        message.addFloatArg(finderRed.blobs[0].centroid.y);
+        sender.sendMessage(message);
+        message.clear();
         ofDrawBitmapString(tempStr1, 20, 250); //draw the string
     }
 }
