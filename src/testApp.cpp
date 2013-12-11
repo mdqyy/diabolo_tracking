@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     //sender = new ofxOscSender;
-    sender.setup("192.168.0.14", 12000);
+    sender.setup("192.168.0.14", 57120);
 
     one.pos = ofVec2f(0,0);
 
@@ -84,7 +84,7 @@ void testApp::draw(){
 
     ofBackground(100,100,100);             //make a NYC style gray background
 
-    ofSetColor(0xffffff);                  //set a white color as the setColor
+    ofSetHexColor(0xffffff);                  //set a white color as the setColor
     vidGrabber.draw(0,0);                  //draw our video for reference/viewing pleasure
 	colorImgHSV.draw(340, 0);
 
@@ -100,6 +100,7 @@ void testApp::draw(){
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
         char tempStr1[255];
         sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
+        message.setAddress("/hello");
         message.addFloatArg(finderRed.blobs[0].centroid.x);
         message.addFloatArg(finderRed.blobs[0].centroid.y);
         sender.sendMessage(message);

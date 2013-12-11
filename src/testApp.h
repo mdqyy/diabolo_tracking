@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxOsc.h"
+#include "ofxSynth.h"
 
 class color
 {
