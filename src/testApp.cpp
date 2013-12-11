@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    jitter = false;
     //sender = new ofxOscSender;
     sender.setup("192.168.0.14", 57120);
 
@@ -98,11 +99,24 @@ void testApp::draw(){
     glPopMatrix();                         //end the stack
 
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
+
+        if(jitter == true){
+            xj = 0.99*xj + 0.01*finderRed.blobs[0].centroid.x;
+            yj = 0.99*yj + 0.01*finderRed.blobs[0].centroid.y;            
+        }
+        else{
+            xj = finderRed.blobs[0].centroid.x;
+            yj = finderRed.blobs[0].centroid.y;
+        }
+
+        
         char tempStr1[255];
-        sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
+        //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
+        sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
+        
         message.setAddress("/hello");
-        message.addFloatArg(finderRed.blobs[0].centroid.x);
-        message.addFloatArg(finderRed.blobs[0].centroid.y);
+        message.addFloatArg(xj);
+        message.addFloatArg(yj);
         sender.sendMessage(message);
         message.clear();
         ofDrawBitmapString(tempStr1, 20, 250); //draw the string
@@ -116,7 +130,9 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    if(key == 106){
+        toggleJitter();
+    }
 }
 
 //--------------------------------------------------------------
@@ -138,6 +154,10 @@ void testApp::mousePressed(int x, int y, int button){
 
     x = MIN(x,hueImg.width-1);     //find the smallest value out of those two so we don't crash if we click outside of the camera image
     y = MIN(y,hueImg.height-1);
+
+    // Init for jitter
+    xj = x;
+    yj = y;
 
     if(button == 0) {
         one.hue = huePixels[x+(y*hueImg.width)];  //set the hue
@@ -166,10 +186,17 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-/*ofxCvImage getMask(unsigned char * pixels){
-    ofxCvColorImage image = new ofxCvColorImage();
-    image.setFromPixels(pixels, camWidth, camHeight);
-    image.convertRgbToHsv();
-    //ofxCvImage mask =
+void testApp::setJitter(bool s){
+    jitter = s;
+}
 
-}*/
+void testApp::toggleJitter(){
+    if(jitter == true){
+        setJitter(false);
+        cout << "Jitter disabled" << endl;
+    }
+    else{
+        setJitter(true);
+        cout << "Jitter enabled" << endl;
+    }
+}

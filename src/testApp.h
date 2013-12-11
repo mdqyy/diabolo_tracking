@@ -3,7 +3,6 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxOsc.h"
-#include "ofxSynth.h"
 
 class color
 {
@@ -15,6 +14,11 @@ class color
 };
 
 class testApp : public ofBaseApp{
+
+    float xj;
+    float yj;
+
+    bool jitter;
 
     ofVideoGrabber vidGrabber;
     int camWidth;
@@ -56,5 +60,7 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+        void setJitter(bool s);
+        void toggleJitter();
 
 };
