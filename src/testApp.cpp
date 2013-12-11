@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    jitter = false;
+    
     //sender = new ofxOscSender;
     sender.setup("192.168.0.14", 57120);
 
@@ -87,15 +87,15 @@ void testApp::draw(){
 
     ofSetHexColor(0xffffff);                  //set a white color as the setColor
     vidGrabber.draw(0,0);                  //draw our video for reference/viewing pleasure
-	colorImgHSV.draw(340, 0);
+	//colorImgHSV.draw(340, 0);
 
-    trackedTextureRed.draw(20, 300);       //draw everything that was found
-    ofDrawBitmapString("red",20, 280);     //label
+    //trackedTextureRed.draw(20, 300);       //draw everything that was found
+    //ofDrawBitmapString("red",20, 280);     //label
     finderRed.draw();                      //draw our contour tracker over the video
 
     glPushMatrix();                        //start a new openGL stack
 	glTranslatef(20,300,0);            //translate lower a bit
-	finderRed.draw();                  //draw the contour tracker over the trackedTextureRed
+	//finderRed.draw();                  //draw the contour tracker over the trackedTextureRed
     glPopMatrix();                         //end the stack
 
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y

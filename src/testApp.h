@@ -18,7 +18,7 @@ class testApp : public ofBaseApp{
     float xj;
     float yj;
 
-    bool jitter;
+    bool jitter = false;
 
     ofVideoGrabber vidGrabber;
     int camWidth;
