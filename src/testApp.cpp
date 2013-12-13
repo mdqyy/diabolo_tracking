@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
+
     //sender = new ofxOscSender;
     sender.setup("192.168.0.14", 57120);
 
@@ -101,8 +101,8 @@ void testApp::draw(){
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
 
         if(jitter == true){
-            xj = 0.99*xj + 0.01*finderRed.blobs[0].centroid.x;
-            yj = 0.99*yj + 0.01*finderRed.blobs[0].centroid.y;            
+            xj = 0.9*xj + 0.1*finderRed.blobs[0].centroid.x;
+            yj = 0.9*yj + 0.1*finderRed.blobs[0].centroid.y;            
         }
         else{
             xj = finderRed.blobs[0].centroid.x;
