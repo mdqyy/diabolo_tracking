@@ -1,8 +1,10 @@
+#include <utility>
 #include "testApp.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    traceLength = 100;
     //sender = new ofxOscSender;
     sender.setup("192.168.0.14", 57120);
 
@@ -109,7 +111,24 @@ void testApp::draw(){
             yj = finderRed.blobs[0].centroid.y;
         }
 
-        
+        if(traceX.size() > traceLength){
+            traceX.pop_back();
+            traceY.pop_back();
+        }
+
+        traceX.insert(traceX.begin(), xj);
+        traceY.insert(traceY.begin(), yj);
+
+        ofNoFill();
+        ofBeginShape();
+        for (unsigned i = 0; i < traceX.size(); ++i){
+            //cout << ' ' << trace.at(i).first << ' & ' << trace.at(i).second << '\n\n' ;
+            ofCircle(traceX.at(i), traceY.at(i), 3);
+            ofCurveVertex(traceX.at(i), traceY.at(i));
+        }
+        ofEndShape();
+
+
         char tempStr1[255];
         //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
         sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);

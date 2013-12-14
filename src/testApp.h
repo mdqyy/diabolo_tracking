@@ -18,6 +18,13 @@ class testApp : public ofBaseApp{
     float xj;
     float yj;
 
+    unsigned traceLength;
+
+    vector<float> traceX;
+    vector<float> traceY;
+
+    //list<float*> trace;
+
     bool jitter = false;
 
     ofVideoGrabber vidGrabber;

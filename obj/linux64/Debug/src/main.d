@@ -381,14 +381,7 @@ obj/linux64/Debug/src/main.o: src/main.cpp \
  ../../../addons/ofxOsc/libs/oscpack/src/osc/../ip/PacketListener.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h \
- ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h \
- ../../../addons/ofxSynth/src/ofxSynth.h \
- ../../../addons/ofxSynth/src/ofxSynthDelayLine.h \
- ../../../addons/ofxSynth/src/ofxSoundEffect.h \
- ../../../addons/ofxSynth/src/ofxSoundUnit.h \
- ../../../addons/ofxSynth/src/ofxSynthFilter.h \
- ../../../addons/ofxSynth/src/ofxSynthEnvelope.h \
- ../../../addons/ofxSynth/src/ofxSynthWaveWriter.h
+ ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h
 
 ../../../libs/openFrameworks/ofMain.h:
 
@@ -1189,17 +1182,3 @@ src/testApp.h:
 ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h:
 
 ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h:
-
-../../../addons/ofxSynth/src/ofxSynth.h:
-
-../../../addons/ofxSynth/src/ofxSynthDelayLine.h:
-
-../../../addons/ofxSynth/src/ofxSoundEffect.h:
-
-../../../addons/ofxSynth/src/ofxSoundUnit.h:
-
-../../../addons/ofxSynth/src/ofxSynthFilter.h:
-
-../../../addons/ofxSynth/src/ofxSynthEnvelope.h:
-
-../../../addons/ofxSynth/src/ofxSynthWaveWriter.h:
