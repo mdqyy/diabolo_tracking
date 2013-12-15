@@ -92,13 +92,14 @@ void testApp::draw(){
 	//colorImgHSV.draw(340, 0);
 
     //trackedTextureRed.draw(20, 300);       //draw everything that was found
+    trackedTextureRed.draw(320, 0);
     //ofDrawBitmapString("red",20, 280);     //label
     finderRed.draw();                      //draw our contour tracker over the video
 
-    glPushMatrix();                        //start a new openGL stack
-	glTranslatef(20,300,0);            //translate lower a bit
+    //glPushMatrix();                        //start a new openGL stack
+	//glTranslatef(20,300,0);            //translate lower a bit
 	//finderRed.draw();                  //draw the contour tracker over the trackedTextureRed
-    glPopMatrix();                         //end the stack
+    //glPopMatrix();                         //end the stack
 
     if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
 
@@ -119,12 +120,18 @@ void testApp::draw(){
         traceX.insert(traceX.begin(), xj);
         traceY.insert(traceY.begin(), yj);
 
+        ofSetColor(0);
+        ofFill();
+        ofRect(camWidth,0,camWidth,camHeight);
+
+        ofSetColor(255);
         ofNoFill();
         ofBeginShape();
         for (unsigned i = 0; i < traceX.size(); ++i){
             //cout << ' ' << trace.at(i).first << ' & ' << trace.at(i).second << '\n\n' ;
-            ofCircle(traceX.at(i), traceY.at(i), 3);
-            ofCurveVertex(traceX.at(i), traceY.at(i));
+            //ofCircle(traceX.at(i), traceY.at(i), 3);
+            //ofCurveVertex(traceX.at(i), traceY.at(i));
+            ofCurveVertex(traceX.at(i)+camWidth, traceY.at(i));
         }
         ofEndShape();
 
