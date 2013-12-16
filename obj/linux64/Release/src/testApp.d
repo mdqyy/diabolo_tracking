@@ -381,7 +381,10 @@ obj/linux64/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
  ../../../addons/ofxOsc/libs/oscpack/src/osc/../ip/PacketListener.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h \
- ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h
+ ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h \
+ src/shapeDetection_OpenCV.h \
+ ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui.hpp \
+ ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui_c.h
 
 src/testApp.h:
 
@@ -1182,3 +1185,9 @@ src/testApp.h:
 ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h:
 
 ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h:
+
+src/shapeDetection_OpenCV.h:
+
+../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui.hpp:
+
+../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui_c.h:

@@ -1,12 +1,17 @@
-#include <utility>
 #include "testApp.h"
+#include "shapeDetection_OpenCV.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    traceLength = 100;
+    circle_templ_img.loadImage("circle_template.jpg");
+    circle_templ_img.setImageType(OF_IMAGE_GRAYSCALE);
+
+    traceLength = 20;
     //sender = new ofxOscSender;
-    sender.setup("192.168.0.14", 57120);
+    //sender.setup("192.168.0.14", 57120);
+    sender.setup("192.168.0.14", 12001);
+
 
     one.pos = ofVec2f(0,0);
 
@@ -80,6 +85,7 @@ be represented by certain hue ranges. hues from 4 to 21 are redish while 109 to 
     if(finderRed.blobs.size() > 0) {
         one.pos = ofVec2f(finderRed.blobs[0].centroid.x,finderRed.blobs[0].centroid.y);  //if the blob exists, set it's associated color (one) to it's position
     }
+
 }
 
 //--------------------------------------------------------------
@@ -120,26 +126,10 @@ void testApp::draw(){
         traceX.insert(traceX.begin(), xj);
         traceY.insert(traceY.begin(), yj);
 
-        ofSetColor(0);
-        ofFill();
-        ofRect(camWidth,0,camWidth,camHeight);
-
-        ofSetColor(255);
-        ofNoFill();
-        ofBeginShape();
-        for (unsigned i = 0; i < traceX.size(); ++i){
-            //cout << ' ' << trace.at(i).first << ' & ' << trace.at(i).second << '\n\n' ;
-            //ofCircle(traceX.at(i), traceY.at(i), 3);
-            //ofCurveVertex(traceX.at(i), traceY.at(i));
-            ofCurveVertex(traceX.at(i)+camWidth, traceY.at(i));
-        }
-        ofEndShape();
-
-
         char tempStr1[255];
         //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
         sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
-        
+
         message.setAddress("/hello");
         message.addFloatArg(xj);
         message.addFloatArg(yj);
@@ -147,6 +137,33 @@ void testApp::draw(){
         message.clear();
         ofDrawBitmapString(tempStr1, 20, 250); //draw the string
     }
+
+    ofSetColor(0);
+    ofFill();
+    ofRect(camWidth,0,camWidth,camHeight);
+
+    ofSetColor(255);
+    ofNoFill();
+
+    ofBeginShape();
+    for (unsigned i = 0; i < traceX.size(); ++i){
+        ofCurveVertex(traceX.at(i)+camWidth, traceY.at(i));
+    }
+    ofEndShape();
+
+    ofTexture traceTexture;
+    traceTexture.allocate(camWidth, camHeight, GL_LUMINANCE);
+    traceTexture.loadScreenData(camWidth, 0, camWidth, camHeight);
+    ofPixels tracePixels;
+    tracePixels.allocate(camWidth, camHeight, OF_IMAGE_GRAYSCALE);
+    traceTexture.readToPixels(tracePixels);
+
+    traceTexture.draw(0, 300);
+
+    circle_templ_img.draw(0, 300);
+    detectCircle(circle_templ_img);
+    //detectCircle(circle_templ_img, circle_templ_img);
+
 }
 
 //--------------------------------------------------------------

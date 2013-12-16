@@ -15,6 +15,8 @@ class color
 
 class testApp : public ofBaseApp{
 
+    ofImage circle_templ_img;
+
     float xj;
     float yj;
 
