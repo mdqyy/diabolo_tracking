@@ -31,16 +31,17 @@ void testApp::setup(){
     //Add the classifier to the pipeline (after we do this, we don't need the DTW classifier anymore)
     pipeline.setClassifier( dtw );
 
-    //Load training data
-    if( trainingData.loadDatasetFromFile("TrainingData.txt") ){
-        cout << "Training data loaded from file" << endl;
+    if(dataTrainingFilename != ""){
+        //Load training data
+        if( trainingData.loadDatasetFromFile(dataTrainingFilename) ){
+            cout << "Training data loaded from file" << endl;
+        }
+        else{
+            cout <<  "WARNING: Failed to load training data from file" << endl;
+        }
+        //Train the pipeline
+        pipeline.train( trainingData );
     }
-    else{
-        cout <<  "WARNING: Failed to load training data from file" << endl;
-    }
-
-    //Train the pipeline
-    pipeline.train( trainingData );
 
 //####### End GRT setup #######
 
@@ -332,4 +333,8 @@ void testApp::toggleJitter(){
         setJitter(true);
         cout << "Jitter enabled" << endl;
     }
+}
+
+void testApp::setTrainingDataFilename(char* filename){
+    dataTrainingFilename = filename;
 }

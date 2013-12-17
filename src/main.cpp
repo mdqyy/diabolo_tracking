@@ -11,6 +11,12 @@ int main( int argc, char* argv[] ){
 	// pass in width and height too:
 	
 	testApp* app = new testApp();
+	if(argc > 1){
+		app->setTrainingDataFilename(argv[1]);		
+	}
+	else{
+		app->setTrainingDataFilename("");
+	}
 	ofRunApp(app);	
 
 }

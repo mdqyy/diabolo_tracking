@@ -57,6 +57,8 @@ class testApp : public ofBaseApp{
     ofxOscSender sender;
     ofxOscMessage message;
 
+    string dataTrainingFilename;
+
     //GRT
     GRT::LabelledTimeSeriesClassificationData trainingData;      //This will store our training data
     GRT::MatrixDouble timeseries;                                //This will store a single training sample
@@ -67,6 +69,9 @@ class testApp : public ofBaseApp{
 
 
 	public:
+
+        void setTrainingDataFilename(char* filename);
+
 		void setup();
 		void update();
 		void draw();
