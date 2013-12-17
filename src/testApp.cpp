@@ -4,9 +4,14 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    ofSetFrameRate(30);
+    ofSetFrameRate(60);
 
 //####### GRT setup #######
+
+    //Initialize the training and info variables
+    infoText = "";
+    trainingClassLabel = 1;
+    record = false;
 
     //The input to the training data will be the [x y] from the mouse, so we set the number of dimensions to 2
     trainingData.setNumDimensions( 2 );
@@ -137,6 +142,12 @@ be represented by certain hue ranges. hues from 4 to 21 are redish while 109 to 
         if( pipeline.getTrained() ){
             pipeline.predict( sample );
         }
+
+        //If we are recording training data, then add the current sample to the training data set
+        if( record ){
+            timeseries.push_back( sample );
+        }
+
     }
 
 
@@ -223,6 +234,36 @@ void testApp::draw(){
     int textX = 20;
     int textY = 320;
 
+    //Draw the training info
+    ofSetColor(255, 255, 255);
+    text = "------------------- TrainingInfo -------------------";
+    ofDrawBitmapString(text, textX,textY);
+
+    if( record ) ofSetColor(255, 0, 0);
+    else ofSetColor(255, 255, 255);
+    textY += 15;
+    text = record ? "RECORDING" : "Not Recording";
+    ofDrawBitmapString(text, textX,textY);
+
+    ofSetColor(255, 255, 255);
+    textY += 15;
+    text = "TrainingClassLabel: " + ofToString(trainingClassLabel);
+    ofDrawBitmapString(text, textX,textY);
+
+    textY += 15;
+    text = "NumTrainingSamples: " + ofToString(trainingData.getNumSamples());
+    ofDrawBitmapString(text, textX,textY);
+
+
+    //Draw the prediction info
+    textY += 30;
+    text = "------------------- Prediction Info -------------------";
+    ofDrawBitmapString(text, textX,textY);
+
+    textY += 15;
+    text =  pipeline.getTrained() ? "Model Trained: YES" : "Model Trained: NO";
+    ofDrawBitmapString(text, textX,textY);
+
     textY += 15;
     text = "PredictedClassLabel: " + ofToString(pipeline.getPredictedClassLabel());
     ofDrawBitmapString(text, textX,textY);
@@ -234,6 +275,20 @@ void testApp::draw(){
     textY += 15;
     text = "SampleRate: " + ofToString(ofGetFrameRate(),2);
     ofDrawBitmapString(text, textX,textY);
+
+    if( record ){
+        ofFill();
+        for(GRT::UINT i=0; i<timeseries.getNumRows(); i++){
+            double x = timeseries[i][0];
+            double y = timeseries[i][1];
+            double r = ofMap(i,0,timeseries.getNumRows(),0,255);
+            double g = 0;
+            double b = 255-r;
+
+            ofSetColor(r,g,b);
+            ofEllipse(x,y,5,5);
+        }
+    }
 
     if( pipeline.getTrained() ){
 
@@ -255,6 +310,11 @@ void testApp::draw(){
         }
     }
 
+    //Draw the info text
+    textY += 30;
+    text = "InfoText: " + infoText;
+    ofDrawBitmapString(text, textX,textY);
+
 }
 
 //--------------------------------------------------------------
@@ -264,8 +324,43 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-    if(key == 106){
-        toggleJitter();
+
+    switch( key ){
+        case 'j':
+            toggleJitter();
+            break;
+        case 'r':
+            record = !record;
+            if( !record ){
+                trainingData.addSample(trainingClassLabel, timeseries);
+
+                //Clear the timeseries for the next recording
+                timeseries.clear();
+            }
+            break;
+        case 53:
+            if( trainingClassLabel > 1 )
+                trainingClassLabel--;
+            break;
+        case 45:
+            trainingClassLabel++;
+            break;
+        case 't':
+            if( pipeline.train( trainingData ) ){
+                infoText = "Pipeline Trained";
+            }else infoText = "WARNING: Failed to train pipeline";
+            break;
+        case 's':
+            if( trainingData.saveDatasetToFile("TrainingData.txt") ){
+                infoText = "Training data saved to file";
+            }else infoText = "WARNING: Failed to save training data to file";
+            break;
+        case 'c':
+            trainingData.clear();
+            infoText = "Training data cleared";
+            break;
+        default:
+            break;
     }
 }
 
