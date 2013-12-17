@@ -4,6 +4,48 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
+    ofSetFrameRate(30);
+
+//####### GRT setup #######
+
+    //The input to the training data will be the [x y] from the mouse, so we set the number of dimensions to 2
+    trainingData.setNumDimensions( 2 );
+
+    //Initialize the DTW classifier
+    GRT::DTW dtw;
+
+    //Turn on null rejection, this lets the classifier output the predicted class label of 0 when the likelihood of a gesture is low
+    dtw.enableNullRejection( true );
+
+    //Set the null rejection coefficient to 3, this controls the thresholds for the automatic null rejection
+    //You can increase this value if you find that your real-time gestures are not being recognized
+    //If you are getting too many false positives then you should decrease this value
+    dtw.setNullRejectionCoeff( 3 );
+
+    //Turn on the automatic data triming, this will remove any sections of none movement from the start and end of the training samples
+    dtw.enableTrimTrainingData(true, 0.1, 90);
+
+    //Offset the timeseries data by the first sample, this makes your gestures (more) invariant to the location the gesture is performed
+    dtw.setOffsetTimeseriesUsingFirstSample(true);
+
+    //Add the classifier to the pipeline (after we do this, we don't need the DTW classifier anymore)
+    pipeline.setClassifier( dtw );
+
+    //Load training data
+    if( trainingData.loadDatasetFromFile("TrainingData.txt") ){
+        cout << "Training data loaded from file" << endl;
+    }
+    else{
+        cout <<  "WARNING: Failed to load training data from file" << endl;
+    }
+
+    //Train the pipeline
+    pipeline.train( trainingData );
+
+//####### End GRT setup #######
+
+
+
     circle_templ_img.loadImage("circle_template.jpg");
     circle_templ_img.setImageType(OF_IMAGE_GRAYSCALE);
 
@@ -84,7 +126,19 @@ be represented by certain hue ranges. hues from 4 to 21 are redish while 109 to 
 
     if(finderRed.blobs.size() > 0) {
         one.pos = ofVec2f(finderRed.blobs[0].centroid.x,finderRed.blobs[0].centroid.y);  //if the blob exists, set it's associated color (one) to it's position
+        
+        //Grab the current diabolo tracking position
+        GRT::VectorDouble sample(2);
+        sample[0] = finderRed.blobs[0].centroid.x;
+        sample[1] = finderRed.blobs[0].centroid.y;
+
+        // Predict gesture
+        if( pipeline.getTrained() ){
+            pipeline.predict( sample );
+        }
     }
+
+
 
 }
 
@@ -151,18 +205,54 @@ void testApp::draw(){
     }
     ofEndShape();
 
-    ofTexture traceTexture;
-    traceTexture.allocate(camWidth, camHeight, GL_LUMINANCE);
-    traceTexture.loadScreenData(camWidth, 0, camWidth, camHeight);
-    ofPixels tracePixels;
-    tracePixels.allocate(camWidth, camHeight, OF_IMAGE_GRAYSCALE);
-    traceTexture.readToPixels(tracePixels);
+    //ofTexture traceTexture;
+    //traceTexture.allocate(camWidth, camHeight, GL_LUMINANCE);
+    //traceTexture.loadScreenData(camWidth, 0, camWidth, camHeight);
+    //ofPixels tracePixels;
+    //tracePixels.allocate(camWidth, camHeight, OF_IMAGE_GRAYSCALE);
+    //traceTexture.readToPixels(tracePixels);
 
-    traceTexture.draw(0, 300);
+    //traceTexture.draw(0, 300);
 
-    circle_templ_img.draw(0, 300);
-    detectCircle(circle_templ_img);
-    //detectCircle(circle_templ_img, circle_templ_img);
+    //circle_templ_img.draw(0, 300);
+    //detectCircle(circle_templ_img);
+    ////detectCircle(circle_templ_img, circle_templ_img);
+
+    string text;
+    int textX = 20;
+    int textY = 320;
+
+    textY += 15;
+    text = "PredictedClassLabel: " + ofToString(pipeline.getPredictedClassLabel());
+    ofDrawBitmapString(text, textX,textY);
+
+    textY += 15;
+    text = "Likelihood: " + ofToString(pipeline.getMaximumLikelihood());
+    ofDrawBitmapString(text, textX,textY);
+
+    textY += 15;
+    text = "SampleRate: " + ofToString(ofGetFrameRate(),2);
+    ofDrawBitmapString(text, textX,textY);
+
+    if( pipeline.getTrained() ){
+
+        //Draw the data in the DTW input buffer
+        GRT::DTW *dtw = pipeline.getClassifier< GRT::DTW >();
+
+        if( dtw != NULL ){
+            vector< GRT::VectorDouble > inputData = dtw->getInputDataBuffer();
+            for(GRT::UINT i=0; i<inputData.size(); i++){
+                double x = inputData[i][0];
+                double y = inputData[i][1];
+                double r = ofMap(i,0,inputData.size(),0,255);
+                double g = 0;
+                double b = 255-r;
+
+                //ofSetColor(r,g,b);
+                //ofEllipse(x,y,5,5);
+            }
+        }
+    }
 
 }
 

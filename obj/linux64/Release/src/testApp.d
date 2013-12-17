@@ -382,6 +382,198 @@ obj/linux64/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h \
+ src/GRT/GRT.h src/GRT/Util/GRTVersionInfo.h src/GRT/Util/GRTCommon.h \
+ src/GRT/Util/GRTVersionInfo.h src/GRT/Util/GRTTypedefs.h \
+ src/GRT/Util/MatrixDouble.h src/GRT/Util/Matrix.h src/GRT/Util/MinMax.h \
+ src/GRT/Util/DebugLog.h src/GRT/Util/Log.h src/GRT/Util/Util.h \
+ src/GRT/Util/ErrorLog.h src/GRT/Util/WarningLog.h \
+ src/GRT/Util/FileParser.h src/GRT/Util/ClassTracker.h \
+ src/GRT/Util/IndexedDouble.h src/GRT/Util/TrainingLog.h \
+ src/GRT/Util/TestingLog.h src/GRT/Util/TrainingResult.h \
+ src/GRT/Util/TestInstanceResult.h src/GRT/Util/TestResult.h \
+ src/GRT/Util/CircularBuffer.h src/GRT/Util/Timer.h \
+ src/GRT/Util/../Util/GRTVersionInfo.h src/GRT/Util/Random.h \
+ src/GRT/Util/EigenvalueDecomposition.h src/GRT/Util/Cholesky.h \
+ src/GRT/Util/GRTCommon.h src/GRT/Util/LUDecomposition.h \
+ src/GRT/Util/SVD.h src/GRT/Util/ObserverManager.h \
+ src/GRT/Util/Observer.h src/GRT/Util/Matrix.h \
+ src/GRT/Util/MatrixDouble.h src/GRT/Util/RangeTracker.h \
+ src/GRT/Util/TrainingDataRecordingTimer.h src/GRT/Util/SVD.h \
+ src/GRT/Util/LUDecomposition.h src/GRT/Util/Cholesky.h \
+ src/GRT/Util/EigenvalueDecomposition.h src/GRT/Util/TestResult.h \
+ src/GRT/Util/ClassificationResult.h \
+ src/GRT/DataStructures/LabelledClassificationData.h \
+ src/GRT/DataStructures/../Util/GRTCommon.h \
+ src/GRT/DataStructures/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/DataStructures/../GestureRecognitionPipeline/../Util/GRTCommon.h \
+ src/GRT/DataStructures/LabelledClassificationSample.h \
+ src/GRT/DataStructures/LabelledRegressionData.h \
+ src/GRT/DataStructures/LabelledRegressionSample.h \
+ src/GRT/DataStructures/UnlabelledClassificationData.h \
+ src/GRT/DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/DataStructures/LabelledTimeSeriesClassificationSample.h \
+ src/GRT/DataStructures/LabelledContinuousTimeSeriesClassificationData.h \
+ src/GRT/DataStructures/TimeSeriesPositionTracker.h \
+ src/GRT/DataStructures/LabelledClassificationData.h \
+ src/GRT/DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/DataStructures/LabelledRegressionData.h \
+ src/GRT/DataStructures/UnlabelledClassificationData.h \
+ src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/EvolutionaryAlgorithm.h \
+ src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/Individual.h \
+ src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/../../Util/GRTCommon.h \
+ src/GRT/CoreAlgorithms/ParticleFilter/ParticleFilter.h \
+ src/GRT/CoreAlgorithms/ParticleFilter/Particle.h \
+ src/GRT/CoreAlgorithms/ParticleFilter/../../Util/GRTCommon.h \
+ src/GRT/CoreAlgorithms/ParticleSwarmOptimization/ParticleSwarmOptimization.h \
+ src/GRT/CoreAlgorithms/ParticleSwarmOptimization/../../Util/GRTCommon.h \
+ src/GRT/CoreAlgorithms/ParticleSwarmOptimization/PSOParticle.h \
+ src/GRT/PreProcessingModules/Derivative.h \
+ src/GRT/PreProcessingModules/../GestureRecognitionPipeline/PreProcessing.h \
+ src/GRT/PreProcessingModules/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/PreProcessingModules/MovingAverageFilter.h \
+ src/GRT/PreProcessingModules/LowPassFilter.h \
+ src/GRT/PreProcessingModules/HighPassFilter.h \
+ src/GRT/PreProcessingModules/MovingAverageFilter.h \
+ src/GRT/PreProcessingModules/DoubleMovingAverageFilter.h \
+ src/GRT/PreProcessingModules/SavitzkyGolayFilter.h \
+ src/GRT/PreProcessingModules/../Util/LUDecomposition.h \
+ src/GRT/PreProcessingModules/DeadZone.h \
+ src/GRT/FeatureExtractionModules/PeakDetection.h \
+ src/GRT/FeatureExtractionModules/../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/FeatureExtractionModules/../PreProcessingModules/MovingAverageFilter.h \
+ src/GRT/FeatureExtractionModules/../PreProcessingModules/HighPassFilter.h \
+ src/GRT/FeatureExtractionModules/../PreProcessingModules/DeadZone.h \
+ src/GRT/FeatureExtractionModules/../Util/CircularBuffer.h \
+ src/GRT/FeatureExtractionModules/ZeroCrossingCounter/ZeroCrossingCounter.h \
+ src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../PreProcessingModules/Derivative.h \
+ src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../PreProcessingModules/DeadZone.h \
+ src/GRT/FeatureExtractionModules/FFT/FFT.h \
+ src/GRT/FeatureExtractionModules/FFT/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/FFT/FastFourierTransform.h \
+ src/GRT/FeatureExtractionModules/FFT/../../Util/GRTCommon.h \
+ src/GRT/FeatureExtractionModules/FFT/FFTFeatures.h \
+ src/GRT/FeatureExtractionModules/FFT/FFT.h \
+ src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/MovementTrajectoryFeatures.h \
+ src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/../../Util/Util.h \
+ src/GRT/FeatureExtractionModules/MovementIndex/MovementIndex.h \
+ src/GRT/FeatureExtractionModules/MovementIndex/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/MovementIndex/../../Util/Util.h \
+ src/GRT/FeatureExtractionModules/TimeDomainFeatures/TimeDomainFeatures.h \
+ src/GRT/FeatureExtractionModules/TimeDomainFeatures/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/TimeDomainFeatures/../../Util/Util.h \
+ src/GRT/FeatureExtractionModules/PCA/PrincipalComponentAnalysis.h \
+ src/GRT/FeatureExtractionModules/PCA/../../Util/GRTCommon.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/KMeansQuantizer.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/KMeans.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../Util/GRTCommon.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../DataStructures/LabelledClassificationData.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../DataStructures/UnlabelledClassificationData.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/LabelledContinuousTimeSeriesClassificationData.h \
+ src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/UnlabelledClassificationData.h \
+ src/GRT/FeatureExtractionModules/TimeseriesBuffer/TimeseriesBuffer.h \
+ src/GRT/FeatureExtractionModules/TimeseriesBuffer/../../GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/PostProcessingModules/ClassLabelFilter.h \
+ src/GRT/PostProcessingModules/../Util/GRTCommon.h \
+ src/GRT/PostProcessingModules/../GestureRecognitionPipeline/PostProcessing.h \
+ src/GRT/PostProcessingModules/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/PostProcessingModules/ClassLabelTimeoutFilter.h \
+ src/GRT/PostProcessingModules/ClassLabelChangeFilter.h \
+ src/GRT/ClassificationModules/AdaBoost/AdaBoost.h \
+ src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/MLBase.h \
+ src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/../DataStructures/LabelledClassificationData.h \
+ src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/../DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/ClassificationModules/AdaBoost/AdaBoostClassModel.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/WeakClassifier.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/../../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/../../../DataStructures/LabelledClassificationData.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/DecisionStump.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/WeakClassifier.h \
+ src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/RadialBasisFunction.h \
+ src/GRT/ClassificationModules/ANBC/ANBC.h \
+ src/GRT/ClassificationModules/ANBC/ANBC_Model.h \
+ src/GRT/ClassificationModules/ANBC/../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/ANBC/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/BAG/BAG.h \
+ src/GRT/ClassificationModules/BAG/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/DecisionTree/DecisionTree.h \
+ src/GRT/ClassificationModules/DecisionTree/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/DecisionTree/DecisionTreeNode.h \
+ src/GRT/ClassificationModules/DecisionTree/../../Util/Node.h \
+ src/GRT/ClassificationModules/DecisionTree/../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/DecisionTree/../../Util/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/ClassificationModules/DTW/DTW.h \
+ src/GRT/ClassificationModules/DTW/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/DTW/../../Util/LabelledTimeSeriesClassificationSampleTrimmer.h \
+ src/GRT/ClassificationModules/DTW/../../Util/../DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/ClassificationModules/GMM/GMM.h \
+ src/GRT/ClassificationModules/GMM/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/GMM/../../ClusteringModules/GaussianMixtureModels/GaussianMixtureModels.h \
+ src/GRT/ClassificationModules/GMM/../../ClusteringModules/GaussianMixtureModels/../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/GMM/MixtureModel.h \
+ src/GRT/ClassificationModules/HMM/HMM.h \
+ src/GRT/ClassificationModules/HMM/HiddenMarkovModel.h \
+ src/GRT/ClassificationModules/HMM/../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/HMM/../../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/ClassificationModules/HMM/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/KNN/KNN.h \
+ src/GRT/ClassificationModules/KNN/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/LDA/LDA.h \
+ src/GRT/ClassificationModules/LDA/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/LDA/../../Util/LUDecomposition.h \
+ src/GRT/ClassificationModules/MinDist/MinDist.h \
+ src/GRT/ClassificationModules/MinDist/MinDistModel.h \
+ src/GRT/ClassificationModules/MinDist/../../Util/GRTCommon.h \
+ src/GRT/ClassificationModules/MinDist/../../ClusteringModules/KMeans/KMeans.h \
+ src/GRT/ClassificationModules/MinDist/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/RandomForests/RandomForests.h \
+ src/GRT/ClassificationModules/RandomForests/../DecisionTree/DecisionTree.h \
+ src/GRT/ClassificationModules/Softmax/Softmax.h \
+ src/GRT/ClassificationModules/Softmax/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/Softmax/SoftmaxModel.h \
+ src/GRT/ClassificationModules/SVM/SVM.h \
+ src/GRT/ClassificationModules/SVM/../../GestureRecognitionPipeline/Classifier.h \
+ src/GRT/ClassificationModules/SVM/LIBSVM/libsvm.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/MLP.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/Neuron.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../Util/GRTCommon.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../DataStructures/LabelledRegressionData.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/Regressifier.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/MLBase.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/../DataStructures/LabelledClassificationData.h \
+ src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/../DataStructures/LabelledTimeSeriesClassificationData.h \
+ src/GRT/RegressionModules/LinearRegression/LinearRegression.h \
+ src/GRT/RegressionModules/LinearRegression/../../GestureRecognitionPipeline/Regressifier.h \
+ src/GRT/RegressionModules/LogisticRegression/LogisticRegression.h \
+ src/GRT/RegressionModules/LogisticRegression/../../GestureRecognitionPipeline/Regressifier.h \
+ src/GRT/RegressionModules/MultidimensionalRegression/MultidimensionalRegression.h \
+ src/GRT/RegressionModules/MultidimensionalRegression/../../GestureRecognitionPipeline/Regressifier.h \
+ src/GRT/RegressionModules/MultidimensionalRegression/../LinearRegression/LinearRegression.h \
+ src/GRT/ClusteringModules/KMeans/KMeans.h \
+ src/GRT/ClusteringModules/GaussianMixtureModels/GaussianMixtureModels.h \
+ src/GRT/ClusteringModules/HierarchicalClustering/HierarchicalClustering.h \
+ src/GRT/ClusteringModules/HierarchicalClustering/../../Util/GRTCommon.h \
+ src/GRT/ClusteringModules/HierarchicalClustering/../../DataStructures/LabelledClassificationData.h \
+ src/GRT/ClusteringModules/HierarchicalClustering/../../DataStructures/UnlabelledClassificationData.h \
+ src/GRT/ContextModules/Gate.h src/GRT/ContextModules/../Util/GRTCommon.h \
+ src/GRT/ContextModules/../GestureRecognitionPipeline/Context.h \
+ src/GRT/ContextModules/../GestureRecognitionPipeline/GRTBase.h \
+ src/GRT/GestureRecognitionPipeline/GestureRecognitionPipeline.h \
+ src/GRT/GestureRecognitionPipeline/PreProcessing.h \
+ src/GRT/GestureRecognitionPipeline/FeatureExtraction.h \
+ src/GRT/GestureRecognitionPipeline/Classifier.h \
+ src/GRT/GestureRecognitionPipeline/Regressifier.h \
+ src/GRT/GestureRecognitionPipeline/PostProcessing.h \
+ src/GRT/GestureRecognitionPipeline/Context.h \
+ src/GRT/GestureRecognitionPipeline/../DataStructures/LabelledContinuousTimeSeriesClassificationData.h \
+ src/GRT/GestureRecognitionPipeline/../Util/ClassificationResult.h \
+ src/GRT/GestureRecognitionPipeline/../Util/TestResult.h \
  src/shapeDetection_OpenCV.h \
  ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui.hpp \
  ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui_c.h
@@ -1185,6 +1377,436 @@ src/testApp.h:
 ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h:
 
 ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h:
+
+src/GRT/GRT.h:
+
+src/GRT/Util/GRTVersionInfo.h:
+
+src/GRT/Util/GRTCommon.h:
+
+src/GRT/Util/GRTVersionInfo.h:
+
+src/GRT/Util/GRTTypedefs.h:
+
+src/GRT/Util/MatrixDouble.h:
+
+src/GRT/Util/Matrix.h:
+
+src/GRT/Util/MinMax.h:
+
+src/GRT/Util/DebugLog.h:
+
+src/GRT/Util/Log.h:
+
+src/GRT/Util/Util.h:
+
+src/GRT/Util/ErrorLog.h:
+
+src/GRT/Util/WarningLog.h:
+
+src/GRT/Util/FileParser.h:
+
+src/GRT/Util/ClassTracker.h:
+
+src/GRT/Util/IndexedDouble.h:
+
+src/GRT/Util/TrainingLog.h:
+
+src/GRT/Util/TestingLog.h:
+
+src/GRT/Util/TrainingResult.h:
+
+src/GRT/Util/TestInstanceResult.h:
+
+src/GRT/Util/TestResult.h:
+
+src/GRT/Util/CircularBuffer.h:
+
+src/GRT/Util/Timer.h:
+
+src/GRT/Util/../Util/GRTVersionInfo.h:
+
+src/GRT/Util/Random.h:
+
+src/GRT/Util/EigenvalueDecomposition.h:
+
+src/GRT/Util/Cholesky.h:
+
+src/GRT/Util/GRTCommon.h:
+
+src/GRT/Util/LUDecomposition.h:
+
+src/GRT/Util/SVD.h:
+
+src/GRT/Util/ObserverManager.h:
+
+src/GRT/Util/Observer.h:
+
+src/GRT/Util/Matrix.h:
+
+src/GRT/Util/MatrixDouble.h:
+
+src/GRT/Util/RangeTracker.h:
+
+src/GRT/Util/TrainingDataRecordingTimer.h:
+
+src/GRT/Util/SVD.h:
+
+src/GRT/Util/LUDecomposition.h:
+
+src/GRT/Util/Cholesky.h:
+
+src/GRT/Util/EigenvalueDecomposition.h:
+
+src/GRT/Util/TestResult.h:
+
+src/GRT/Util/ClassificationResult.h:
+
+src/GRT/DataStructures/LabelledClassificationData.h:
+
+src/GRT/DataStructures/../Util/GRTCommon.h:
+
+src/GRT/DataStructures/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/DataStructures/../GestureRecognitionPipeline/../Util/GRTCommon.h:
+
+src/GRT/DataStructures/LabelledClassificationSample.h:
+
+src/GRT/DataStructures/LabelledRegressionData.h:
+
+src/GRT/DataStructures/LabelledRegressionSample.h:
+
+src/GRT/DataStructures/UnlabelledClassificationData.h:
+
+src/GRT/DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/DataStructures/LabelledTimeSeriesClassificationSample.h:
+
+src/GRT/DataStructures/LabelledContinuousTimeSeriesClassificationData.h:
+
+src/GRT/DataStructures/TimeSeriesPositionTracker.h:
+
+src/GRT/DataStructures/LabelledClassificationData.h:
+
+src/GRT/DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/DataStructures/LabelledRegressionData.h:
+
+src/GRT/DataStructures/UnlabelledClassificationData.h:
+
+src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/EvolutionaryAlgorithm.h:
+
+src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/Individual.h:
+
+src/GRT/CoreAlgorithms/EvolutionaryAlgorithm/../../Util/GRTCommon.h:
+
+src/GRT/CoreAlgorithms/ParticleFilter/ParticleFilter.h:
+
+src/GRT/CoreAlgorithms/ParticleFilter/Particle.h:
+
+src/GRT/CoreAlgorithms/ParticleFilter/../../Util/GRTCommon.h:
+
+src/GRT/CoreAlgorithms/ParticleSwarmOptimization/ParticleSwarmOptimization.h:
+
+src/GRT/CoreAlgorithms/ParticleSwarmOptimization/../../Util/GRTCommon.h:
+
+src/GRT/CoreAlgorithms/ParticleSwarmOptimization/PSOParticle.h:
+
+src/GRT/PreProcessingModules/Derivative.h:
+
+src/GRT/PreProcessingModules/../GestureRecognitionPipeline/PreProcessing.h:
+
+src/GRT/PreProcessingModules/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/PreProcessingModules/MovingAverageFilter.h:
+
+src/GRT/PreProcessingModules/LowPassFilter.h:
+
+src/GRT/PreProcessingModules/HighPassFilter.h:
+
+src/GRT/PreProcessingModules/MovingAverageFilter.h:
+
+src/GRT/PreProcessingModules/DoubleMovingAverageFilter.h:
+
+src/GRT/PreProcessingModules/SavitzkyGolayFilter.h:
+
+src/GRT/PreProcessingModules/../Util/LUDecomposition.h:
+
+src/GRT/PreProcessingModules/DeadZone.h:
+
+src/GRT/FeatureExtractionModules/PeakDetection.h:
+
+src/GRT/FeatureExtractionModules/../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/FeatureExtractionModules/../PreProcessingModules/MovingAverageFilter.h:
+
+src/GRT/FeatureExtractionModules/../PreProcessingModules/HighPassFilter.h:
+
+src/GRT/FeatureExtractionModules/../PreProcessingModules/DeadZone.h:
+
+src/GRT/FeatureExtractionModules/../Util/CircularBuffer.h:
+
+src/GRT/FeatureExtractionModules/ZeroCrossingCounter/ZeroCrossingCounter.h:
+
+src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../PreProcessingModules/Derivative.h:
+
+src/GRT/FeatureExtractionModules/ZeroCrossingCounter/../../PreProcessingModules/DeadZone.h:
+
+src/GRT/FeatureExtractionModules/FFT/FFT.h:
+
+src/GRT/FeatureExtractionModules/FFT/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/FFT/FastFourierTransform.h:
+
+src/GRT/FeatureExtractionModules/FFT/../../Util/GRTCommon.h:
+
+src/GRT/FeatureExtractionModules/FFT/FFTFeatures.h:
+
+src/GRT/FeatureExtractionModules/FFT/FFT.h:
+
+src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/MovementTrajectoryFeatures.h:
+
+src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/MovementTrajectoryFeatures/../../Util/Util.h:
+
+src/GRT/FeatureExtractionModules/MovementIndex/MovementIndex.h:
+
+src/GRT/FeatureExtractionModules/MovementIndex/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/MovementIndex/../../Util/Util.h:
+
+src/GRT/FeatureExtractionModules/TimeDomainFeatures/TimeDomainFeatures.h:
+
+src/GRT/FeatureExtractionModules/TimeDomainFeatures/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/TimeDomainFeatures/../../Util/Util.h:
+
+src/GRT/FeatureExtractionModules/PCA/PrincipalComponentAnalysis.h:
+
+src/GRT/FeatureExtractionModules/PCA/../../Util/GRTCommon.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/KMeansQuantizer.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/KMeans.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../Util/GRTCommon.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../DataStructures/LabelledClassificationData.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../ClusteringModules/KMeans/../../DataStructures/UnlabelledClassificationData.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/LabelledContinuousTimeSeriesClassificationData.h:
+
+src/GRT/FeatureExtractionModules/KMeansQuantizer/../../DataStructures/UnlabelledClassificationData.h:
+
+src/GRT/FeatureExtractionModules/TimeseriesBuffer/TimeseriesBuffer.h:
+
+src/GRT/FeatureExtractionModules/TimeseriesBuffer/../../GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/PostProcessingModules/ClassLabelFilter.h:
+
+src/GRT/PostProcessingModules/../Util/GRTCommon.h:
+
+src/GRT/PostProcessingModules/../GestureRecognitionPipeline/PostProcessing.h:
+
+src/GRT/PostProcessingModules/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/PostProcessingModules/ClassLabelTimeoutFilter.h:
+
+src/GRT/PostProcessingModules/ClassLabelChangeFilter.h:
+
+src/GRT/ClassificationModules/AdaBoost/AdaBoost.h:
+
+src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/MLBase.h:
+
+src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/../DataStructures/LabelledClassificationData.h:
+
+src/GRT/ClassificationModules/AdaBoost/../../GestureRecognitionPipeline/../DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/ClassificationModules/AdaBoost/AdaBoostClassModel.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/WeakClassifier.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/../../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/../../../DataStructures/LabelledClassificationData.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/DecisionStump.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/WeakClassifier.h:
+
+src/GRT/ClassificationModules/AdaBoost/WeakClassifiers/RadialBasisFunction.h:
+
+src/GRT/ClassificationModules/ANBC/ANBC.h:
+
+src/GRT/ClassificationModules/ANBC/ANBC_Model.h:
+
+src/GRT/ClassificationModules/ANBC/../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/ANBC/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/BAG/BAG.h:
+
+src/GRT/ClassificationModules/BAG/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/DecisionTree/DecisionTree.h:
+
+src/GRT/ClassificationModules/DecisionTree/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/DecisionTree/DecisionTreeNode.h:
+
+src/GRT/ClassificationModules/DecisionTree/../../Util/Node.h:
+
+src/GRT/ClassificationModules/DecisionTree/../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/DecisionTree/../../Util/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/ClassificationModules/DTW/DTW.h:
+
+src/GRT/ClassificationModules/DTW/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/DTW/../../Util/LabelledTimeSeriesClassificationSampleTrimmer.h:
+
+src/GRT/ClassificationModules/DTW/../../Util/../DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/ClassificationModules/GMM/GMM.h:
+
+src/GRT/ClassificationModules/GMM/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/GMM/../../ClusteringModules/GaussianMixtureModels/GaussianMixtureModels.h:
+
+src/GRT/ClassificationModules/GMM/../../ClusteringModules/GaussianMixtureModels/../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/GMM/MixtureModel.h:
+
+src/GRT/ClassificationModules/HMM/HMM.h:
+
+src/GRT/ClassificationModules/HMM/HiddenMarkovModel.h:
+
+src/GRT/ClassificationModules/HMM/../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/HMM/../../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/ClassificationModules/HMM/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/KNN/KNN.h:
+
+src/GRT/ClassificationModules/KNN/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/LDA/LDA.h:
+
+src/GRT/ClassificationModules/LDA/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/LDA/../../Util/LUDecomposition.h:
+
+src/GRT/ClassificationModules/MinDist/MinDist.h:
+
+src/GRT/ClassificationModules/MinDist/MinDistModel.h:
+
+src/GRT/ClassificationModules/MinDist/../../Util/GRTCommon.h:
+
+src/GRT/ClassificationModules/MinDist/../../ClusteringModules/KMeans/KMeans.h:
+
+src/GRT/ClassificationModules/MinDist/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/RandomForests/RandomForests.h:
+
+src/GRT/ClassificationModules/RandomForests/../DecisionTree/DecisionTree.h:
+
+src/GRT/ClassificationModules/Softmax/Softmax.h:
+
+src/GRT/ClassificationModules/Softmax/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/Softmax/SoftmaxModel.h:
+
+src/GRT/ClassificationModules/SVM/SVM.h:
+
+src/GRT/ClassificationModules/SVM/../../GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/ClassificationModules/SVM/LIBSVM/libsvm.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/MLP.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/Neuron.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../Util/GRTCommon.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../DataStructures/LabelledRegressionData.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/Regressifier.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/MLBase.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/../DataStructures/LabelledClassificationData.h:
+
+src/GRT/RegressionModules/ArtificialNeuralNetworks/MLP/../../../GestureRecognitionPipeline/../DataStructures/LabelledTimeSeriesClassificationData.h:
+
+src/GRT/RegressionModules/LinearRegression/LinearRegression.h:
+
+src/GRT/RegressionModules/LinearRegression/../../GestureRecognitionPipeline/Regressifier.h:
+
+src/GRT/RegressionModules/LogisticRegression/LogisticRegression.h:
+
+src/GRT/RegressionModules/LogisticRegression/../../GestureRecognitionPipeline/Regressifier.h:
+
+src/GRT/RegressionModules/MultidimensionalRegression/MultidimensionalRegression.h:
+
+src/GRT/RegressionModules/MultidimensionalRegression/../../GestureRecognitionPipeline/Regressifier.h:
+
+src/GRT/RegressionModules/MultidimensionalRegression/../LinearRegression/LinearRegression.h:
+
+src/GRT/ClusteringModules/KMeans/KMeans.h:
+
+src/GRT/ClusteringModules/GaussianMixtureModels/GaussianMixtureModels.h:
+
+src/GRT/ClusteringModules/HierarchicalClustering/HierarchicalClustering.h:
+
+src/GRT/ClusteringModules/HierarchicalClustering/../../Util/GRTCommon.h:
+
+src/GRT/ClusteringModules/HierarchicalClustering/../../DataStructures/LabelledClassificationData.h:
+
+src/GRT/ClusteringModules/HierarchicalClustering/../../DataStructures/UnlabelledClassificationData.h:
+
+src/GRT/ContextModules/Gate.h:
+
+src/GRT/ContextModules/../Util/GRTCommon.h:
+
+src/GRT/ContextModules/../GestureRecognitionPipeline/Context.h:
+
+src/GRT/ContextModules/../GestureRecognitionPipeline/GRTBase.h:
+
+src/GRT/GestureRecognitionPipeline/GestureRecognitionPipeline.h:
+
+src/GRT/GestureRecognitionPipeline/PreProcessing.h:
+
+src/GRT/GestureRecognitionPipeline/FeatureExtraction.h:
+
+src/GRT/GestureRecognitionPipeline/Classifier.h:
+
+src/GRT/GestureRecognitionPipeline/Regressifier.h:
+
+src/GRT/GestureRecognitionPipeline/PostProcessing.h:
+
+src/GRT/GestureRecognitionPipeline/Context.h:
+
+src/GRT/GestureRecognitionPipeline/../DataStructures/LabelledContinuousTimeSeriesClassificationData.h:
+
+src/GRT/GestureRecognitionPipeline/../Util/ClassificationResult.h:
+
+src/GRT/GestureRecognitionPipeline/../Util/TestResult.h:
 
 src/shapeDetection_OpenCV.h:
 
