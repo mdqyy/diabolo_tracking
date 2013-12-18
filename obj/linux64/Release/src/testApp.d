@@ -573,10 +573,7 @@ obj/linux64/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
  src/GRT/GestureRecognitionPipeline/Context.h \
  src/GRT/GestureRecognitionPipeline/../DataStructures/LabelledContinuousTimeSeriesClassificationData.h \
  src/GRT/GestureRecognitionPipeline/../Util/ClassificationResult.h \
- src/GRT/GestureRecognitionPipeline/../Util/TestResult.h \
- src/shapeDetection_OpenCV.h \
- ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui.hpp \
- ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui_c.h
+ src/GRT/GestureRecognitionPipeline/../Util/TestResult.h
 
 src/testApp.h:
 
@@ -1807,9 +1804,3 @@ src/GRT/GestureRecognitionPipeline/../DataStructures/LabelledContinuousTimeSerie
 src/GRT/GestureRecognitionPipeline/../Util/ClassificationResult.h:
 
 src/GRT/GestureRecognitionPipeline/../Util/TestResult.h:
-
-src/shapeDetection_OpenCV.h:
-
-../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui.hpp:
-
-../../../addons/ofxOpenCv/libs/opencv/include/opencv2/highgui/highgui_c.h:
