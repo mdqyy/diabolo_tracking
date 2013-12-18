@@ -1,5 +1,4 @@
 #include "testApp.h"
-#include "shapeDetection_OpenCV.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -10,50 +9,8 @@ void testApp::setup(){
 
     //Initialize the training and info variables
     infoText = "";
-    trainingClassLabel = 1;
-    record = false;
-
-    //The input to the training data will be the [x y] from the mouse, so we set the number of dimensions to 2
-    trainingData.setNumDimensions( 2 );
-
-    //Initialize the DTW classifier
-    GRT::DTW dtw;
-
-    //Turn on null rejection, this lets the classifier output the predicted class label of 0 when the likelihood of a gesture is low
-    dtw.enableNullRejection( true );
-
-    //Set the null rejection coefficient to 3, this controls the thresholds for the automatic null rejection
-    //You can increase this value if you find that your real-time gestures are not being recognized
-    //If you are getting too many false positives then you should decrease this value
-    dtw.setNullRejectionCoeff( 3 );
-
-    //Turn on the automatic data triming, this will remove any sections of none movement from the start and end of the training samples
-    dtw.enableTrimTrainingData(true, 0.1, 90);
-
-    //Offset the timeseries data by the first sample, this makes your gestures (more) invariant to the location the gesture is performed
-    dtw.setOffsetTimeseriesUsingFirstSample(true);
-
-    //Add the classifier to the pipeline (after we do this, we don't need the DTW classifier anymore)
-    pipeline.setClassifier( dtw );
-
-    if(dataTrainingFilename != ""){
-        //Load training data
-        if( trainingData.loadDatasetFromFile(dataTrainingFilename) ){
-            cout << "Training data loaded from file" << endl;
-        }
-        else{
-            cout <<  "WARNING: Failed to load training data from file" << endl;
-        }
-        //Train the pipeline
-        pipeline.train( trainingData );
-    }
-
+    gr.setup();
 //####### End GRT setup #######
-
-
-
-    circle_templ_img.loadImage("circle_template.jpg");
-    circle_templ_img.setImageType(OF_IMAGE_GRAYSCALE);
 
     traceLength = 20;
     //sender = new ofxOscSender;
@@ -83,7 +40,7 @@ void testApp::setup(){
     vidGrabber.listDevices();
     vidGrabber.setDeviceID(1);
 
-    vidGrabber.setVerbose(true);                    //just some text for debugging
+    //vidGrabber.setVerbose(true);                    //just some text for debugging
     vidGrabber.initGrabber(camWidth,camHeight);     //start the show!
     //vidGrabber.loadMovie("diabolo.mp4");
     //vidGrabber.play();
@@ -135,22 +92,7 @@ be represented by certain hue ranges. hues from 4 to 21 are redish while 109 to 
 
     if(finderRed.blobs.size() > 0) {
         one.pos = ofVec2f(finderRed.blobs[0].centroid.x,finderRed.blobs[0].centroid.y);  //if the blob exists, set it's associated color (one) to it's position
-        
-        //Grab the current diabolo tracking position
-        GRT::VectorDouble sample(2);
-        sample[0] = finderRed.blobs[0].centroid.x;
-        sample[1] = finderRed.blobs[0].centroid.y;
-
-        // Predict gesture
-        if( pipeline.getTrained() ){
-            pipeline.predict( sample );
-        }
-
-        //If we are recording training data, then add the current sample to the training data set
-        if( record ){
-            timeseries.push_back( sample );
-        }
-
+        gr.update(finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
     }
 
 
@@ -220,103 +162,7 @@ void testApp::draw(){
     }
     ofEndShape();
 
-    //ofTexture traceTexture;
-    //traceTexture.allocate(camWidth, camHeight, GL_LUMINANCE);
-    //traceTexture.loadScreenData(camWidth, 0, camWidth, camHeight);
-    //ofPixels tracePixels;
-    //tracePixels.allocate(camWidth, camHeight, OF_IMAGE_GRAYSCALE);
-    //traceTexture.readToPixels(tracePixels);
-
-    //traceTexture.draw(0, 300);
-
-    //circle_templ_img.draw(0, 300);
-    //detectCircle(circle_templ_img);
-    ////detectCircle(circle_templ_img, circle_templ_img);
-
-    string text;
-    int textX = 20;
-    int textY = 320;
-
-    //Draw the training info
-    ofSetColor(255, 255, 255);
-    text = "------------------- TrainingInfo -------------------";
-    ofDrawBitmapString(text, textX,textY);
-
-    if( record ) ofSetColor(255, 0, 0);
-    else ofSetColor(255, 255, 255);
-    textY += 15;
-    text = record ? "RECORDING" : "Not Recording";
-    ofDrawBitmapString(text, textX,textY);
-
-    ofSetColor(255, 255, 255);
-    textY += 15;
-    text = "TrainingClassLabel: " + ofToString(trainingClassLabel);
-    ofDrawBitmapString(text, textX,textY);
-
-    textY += 15;
-    text = "NumTrainingSamples: " + ofToString(trainingData.getNumSamples());
-    ofDrawBitmapString(text, textX,textY);
-
-
-    //Draw the prediction info
-    textY += 30;
-    text = "------------------- Prediction Info -------------------";
-    ofDrawBitmapString(text, textX,textY);
-
-    textY += 15;
-    text =  pipeline.getTrained() ? "Model Trained: YES" : "Model Trained: NO";
-    ofDrawBitmapString(text, textX,textY);
-
-    textY += 15;
-    text = "PredictedClassLabel: " + ofToString(pipeline.getPredictedClassLabel());
-    ofDrawBitmapString(text, textX,textY);
-
-    textY += 15;
-    text = "Likelihood: " + ofToString(pipeline.getMaximumLikelihood());
-    ofDrawBitmapString(text, textX,textY);
-
-    textY += 15;
-    text = "SampleRate: " + ofToString(ofGetFrameRate(),2);
-    ofDrawBitmapString(text, textX,textY);
-
-    if( record ){
-        ofFill();
-        for(GRT::UINT i=0; i<timeseries.getNumRows(); i++){
-            double x = timeseries[i][0];
-            double y = timeseries[i][1];
-            double r = ofMap(i,0,timeseries.getNumRows(),0,255);
-            double g = 0;
-            double b = 255-r;
-
-            ofSetColor(r,g,b);
-            ofEllipse(x,y,5,5);
-        }
-    }
-
-    if( pipeline.getTrained() ){
-
-        //Draw the data in the DTW input buffer
-        GRT::DTW *dtw = pipeline.getClassifier< GRT::DTW >();
-
-        if( dtw != NULL ){
-            vector< GRT::VectorDouble > inputData = dtw->getInputDataBuffer();
-            for(GRT::UINT i=0; i<inputData.size(); i++){
-                double x = inputData[i][0];
-                double y = inputData[i][1];
-                double r = ofMap(i,0,inputData.size(),0,255);
-                double g = 0;
-                double b = 255-r;
-
-                //ofSetColor(r,g,b);
-                //ofEllipse(x,y,5,5);
-            }
-        }
-    }
-
-    //Draw the info text
-    textY += 30;
-    text = "InfoText: " + infoText;
-    ofDrawBitmapString(text, textX,textY);
+    gr.draw();
 
 }
 
@@ -329,38 +175,30 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
 
     switch( key ){
+        cout << key << endl;
         case 'j':
             toggleJitter();
             break;
         case 'r':
-            record = !record;
-            if( !record ){
-                trainingData.addSample(trainingClassLabel, timeseries);
-
-                //Clear the timeseries for the next recording
-                timeseries.clear();
-            }
+            gr.recordGesture();
             break;
         case 53:
-            if( trainingClassLabel > 1 )
-                trainingClassLabel--;
+            gr.decreaseClassLabel();
             break;
         case 45:
-            trainingClassLabel++;
+            gr.increaseClassLabel();
             break;
         case 't':
-            if( pipeline.train( trainingData ) ){
-                infoText = "Pipeline Trained";
-            }else infoText = "WARNING: Failed to train pipeline";
+            gr.trainPipeline();
             break;
         case 's':
-            if( trainingData.saveDatasetToFile("TrainingData.txt") ){
-                infoText = "Training data saved to file";
-            }else infoText = "WARNING: Failed to save training data to file";
+            gr.saveTrainingData();
             break;
         case 'c':
-            trainingData.clear();
-            infoText = "Training data cleared";
+            gr.clearTrainingData();
+            break;
+        case 'f':
+            ofToggleFullscreen();
             break;
         default:
             break;
@@ -425,14 +263,14 @@ void testApp::setJitter(bool s){
 void testApp::toggleJitter(){
     if(jitter == true){
         setJitter(false);
-        cout << "Jitter disabled" << endl;
+        infoText = "Jitter disabled";
     }
     else{
         setJitter(true);
-        cout << "Jitter enabled" << endl;
+        infoText = "Jitter enabled";
     }
 }
 
 void testApp::setTrainingDataFilename(char* filename){
-    dataTrainingFilename = filename;
+    gr.setTrainingDataFilename(filename);
 }

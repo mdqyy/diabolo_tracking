@@ -382,26 +382,26 @@ obj/linux64/Release/src/main.o: src/main.cpp \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h \
- src/GRT/GRT.h src/GRT/Util/GRTVersionInfo.h src/GRT/Util/GRTCommon.h \
- src/GRT/Util/GRTVersionInfo.h src/GRT/Util/GRTTypedefs.h \
- src/GRT/Util/MatrixDouble.h src/GRT/Util/Matrix.h src/GRT/Util/MinMax.h \
- src/GRT/Util/DebugLog.h src/GRT/Util/Log.h src/GRT/Util/Util.h \
- src/GRT/Util/ErrorLog.h src/GRT/Util/WarningLog.h \
- src/GRT/Util/FileParser.h src/GRT/Util/ClassTracker.h \
- src/GRT/Util/IndexedDouble.h src/GRT/Util/TrainingLog.h \
- src/GRT/Util/TestingLog.h src/GRT/Util/TrainingResult.h \
- src/GRT/Util/TestInstanceResult.h src/GRT/Util/TestResult.h \
- src/GRT/Util/CircularBuffer.h src/GRT/Util/Timer.h \
- src/GRT/Util/../Util/GRTVersionInfo.h src/GRT/Util/Random.h \
- src/GRT/Util/EigenvalueDecomposition.h src/GRT/Util/Cholesky.h \
- src/GRT/Util/GRTCommon.h src/GRT/Util/LUDecomposition.h \
- src/GRT/Util/SVD.h src/GRT/Util/ObserverManager.h \
- src/GRT/Util/Observer.h src/GRT/Util/Matrix.h \
- src/GRT/Util/MatrixDouble.h src/GRT/Util/RangeTracker.h \
- src/GRT/Util/TrainingDataRecordingTimer.h src/GRT/Util/SVD.h \
- src/GRT/Util/LUDecomposition.h src/GRT/Util/Cholesky.h \
- src/GRT/Util/EigenvalueDecomposition.h src/GRT/Util/TestResult.h \
- src/GRT/Util/ClassificationResult.h \
+ src/gestureRecognition.h src/GRT/GRT.h src/GRT/Util/GRTVersionInfo.h \
+ src/GRT/Util/GRTCommon.h src/GRT/Util/GRTVersionInfo.h \
+ src/GRT/Util/GRTTypedefs.h src/GRT/Util/MatrixDouble.h \
+ src/GRT/Util/Matrix.h src/GRT/Util/MinMax.h src/GRT/Util/DebugLog.h \
+ src/GRT/Util/Log.h src/GRT/Util/Util.h src/GRT/Util/ErrorLog.h \
+ src/GRT/Util/WarningLog.h src/GRT/Util/FileParser.h \
+ src/GRT/Util/ClassTracker.h src/GRT/Util/IndexedDouble.h \
+ src/GRT/Util/TrainingLog.h src/GRT/Util/TestingLog.h \
+ src/GRT/Util/TrainingResult.h src/GRT/Util/TestInstanceResult.h \
+ src/GRT/Util/TestResult.h src/GRT/Util/CircularBuffer.h \
+ src/GRT/Util/Timer.h src/GRT/Util/../Util/GRTVersionInfo.h \
+ src/GRT/Util/Random.h src/GRT/Util/EigenvalueDecomposition.h \
+ src/GRT/Util/Cholesky.h src/GRT/Util/GRTCommon.h \
+ src/GRT/Util/LUDecomposition.h src/GRT/Util/SVD.h \
+ src/GRT/Util/ObserverManager.h src/GRT/Util/Observer.h \
+ src/GRT/Util/Matrix.h src/GRT/Util/MatrixDouble.h \
+ src/GRT/Util/RangeTracker.h src/GRT/Util/TrainingDataRecordingTimer.h \
+ src/GRT/Util/SVD.h src/GRT/Util/LUDecomposition.h \
+ src/GRT/Util/Cholesky.h src/GRT/Util/EigenvalueDecomposition.h \
+ src/GRT/Util/TestResult.h src/GRT/Util/ClassificationResult.h \
  src/GRT/DataStructures/LabelledClassificationData.h \
  src/GRT/DataStructures/../Util/GRTCommon.h \
  src/GRT/DataStructures/../GestureRecognitionPipeline/GRTBase.h \
@@ -1374,6 +1374,8 @@ src/testApp.h:
 ../../../addons/ofxOsc/libs/oscpack/src/ip/NetworkingUtils.h:
 
 ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h:
+
+src/gestureRecognition.h:
 
 src/GRT/GRT.h:
 

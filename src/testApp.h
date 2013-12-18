@@ -4,7 +4,7 @@
 #include "ofxOpenCv.h"
 #include "ofxOsc.h"
 
-#include "GRT/GRT.h"
+#include "gestureRecognition.h"
 
 class color
 {
@@ -59,14 +59,9 @@ class testApp : public ofBaseApp{
 
     string dataTrainingFilename;
 
-    //GRT
-    GRT::LabelledTimeSeriesClassificationData trainingData;      //This will store our training data
-    GRT::MatrixDouble timeseries;                                //This will store a single training sample
-    GRT::GestureRecognitionPipeline pipeline;                    //This is a wrapper for our classifier and any pre/post processing modules
-    bool record;                                            //This is a flag that keeps track of when we should record training data
-    GRT::UINT trainingClassLabel;                                //This will hold the current label for when we are training the classifier
     string infoText;                                        //This string will be used to draw some info messages to the main app window
 
+    gestureRecognition gr;
 
 	public:
 
