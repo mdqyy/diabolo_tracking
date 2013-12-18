@@ -1,2 +1,5 @@
 tracking.sublime-project
 tracking.sublime-workspace
+obj/
+bin/tracking
+bin/tracking_debug
