@@ -10,13 +10,10 @@ void testApp::setup(){
     //Initialize the training and info variables
     infoText = "";
     gr.setup();
+    oc.setup();
 //####### End GRT setup #######
 
     traceLength = 20;
-    //sender = new ofxOscSender;
-    //sender.setup("192.168.0.14", 57120);
-    sender.setup("192.168.0.14", 12001);
-
 
     one.pos = ofVec2f(0,0);
 
@@ -141,11 +138,8 @@ void testApp::draw(){
         //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
         sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
 
-        message.setAddress("/hello");
-        message.addFloatArg(xj);
-        message.addFloatArg(yj);
-        sender.sendMessage(message);
-        message.clear();
+        oc.sendPosition(xj, yj);
+
         ofDrawBitmapString(tempStr1, 20, 250); //draw the string
     }
 

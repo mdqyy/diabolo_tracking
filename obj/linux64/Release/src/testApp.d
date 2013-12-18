@@ -365,7 +365,7 @@ obj/linux64/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
  ../../../addons/ofxOpenCv/src/ofxCvFloatImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvShortImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h \
- ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h \
+ ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h src/OSCCommunication.h \
  ../../../addons/ofxOsc/src/ofxOsc.h \
  ../../../addons/ofxOsc/src/ofxOscArg.h \
  ../../../addons/ofxOsc/src/ofxOscMessage.h \
@@ -1342,6 +1342,8 @@ src/testApp.h:
 ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h:
 
 ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h:
+
+src/OSCCommunication.h:
 
 ../../../addons/ofxOsc/src/ofxOsc.h:
 

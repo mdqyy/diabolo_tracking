@@ -2,8 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
-#include "ofxOsc.h"
 
+#include "OSCCommunication.h"
 #include "gestureRecognition.h"
 
 class color
@@ -53,15 +53,12 @@ class testApp : public ofBaseApp{
 
     ofxCvContourFinder      finderRed;                  //contour finder, very handy
 
-    // Osc
-    ofxOscSender sender;
-    ofxOscMessage message;
-
     string dataTrainingFilename;
 
     string infoText;                                        //This string will be used to draw some info messages to the main app window
 
     gestureRecognition gr;
+    OSCCommunication oc;
 
 	public:
 
