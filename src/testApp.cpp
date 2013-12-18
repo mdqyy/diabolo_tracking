@@ -80,6 +80,9 @@ void testApp::setup(){
 
     trackedTextureRed.allocate(camWidth, camHeight, GL_LUMINANCE);        //final output
 
+    vidGrabber.listDevices();
+    vidGrabber.setDeviceID(1);
+
     vidGrabber.setVerbose(true);                    //just some text for debugging
     vidGrabber.initGrabber(camWidth,camHeight);     //start the show!
     //vidGrabber.loadMovie("diabolo.mp4");
