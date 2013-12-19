@@ -4,24 +4,27 @@
 void testApp::setup(){
 
     ofSetFrameRate(60);
+
     tracked = false;
     x = 0;
     y = 0;
 
-//####### GRT setup #######
-
-    //Initialize the training and info variables
     infoText = "";
+
+    //Gesture recognition setup
     gr.setup();
+    //OSC communication setup
     oc.setup();
-    tracking.setup();
-//####### End GRT setup #######
+    //Tracking setup
+    color_tracking.setup();
+    //IR tracking setup
+    ir_tracking.setup();
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    tracked = tracking.update(&x, &y);
+    tracked = color_tracking.update(&x, &y);
     if(tracked){
         oc.sendPosition(x, y);
         gr.update(x, y);
@@ -30,8 +33,16 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    tracking.draw();
+    color_tracking.draw();
     gr.draw();
+    if(oc.hasMessage()){
+        ofxOscMessage message;
+        oc.nextMessage(&message);
+        if(message.getAddress() == "/wii/ir/x" || message.getAddress() == "/wii/ir/y"){
+            ir_tracking.newIRMessage(message);            
+        }
+    }
+    ir_tracking.draw(320, 320);
 }
 
 //--------------------------------------------------------------
@@ -45,7 +56,7 @@ void testApp::keyReleased(int key){
     switch( key ){
         cout << key << endl;
         case 'j':
-            tracking.toggleJitter();
+            color_tracking.toggleJitter();
             break;
         case 'r':
             gr.recordGesture();
@@ -86,7 +97,7 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     if(button == 0) {
-        tracking.selectColor(x, y);
+        color_tracking.selectColor(x, y);
     }
 }
 

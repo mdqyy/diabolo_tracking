@@ -5,12 +5,13 @@
 #include "OSCCommunication.h"
 #include "gestureRecognition.h"
 #include "colorTracking.h"
+#include "IRTracking.h"
 
 class testApp : public ofBaseApp{
 
     string dataTrainingFilename;
 
-    string infoText;                                        //This string will be used to draw some info messages to the main app window
+    string infoText; //This string will be used to draw some info messages to the main app window
 
     bool tracked;
     float x;
@@ -18,7 +19,8 @@ class testApp : public ofBaseApp{
 
     gestureRecognition gr;
     OSCCommunication oc;
-    colorTracking tracking;
+    colorTracking color_tracking;
+    IRTracking ir_tracking;
 
 	public:
 
