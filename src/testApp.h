@@ -7,8 +7,13 @@
 #include "colorTracking.h"
 #include "IRTracking.h"
 
+#define COLOR_MODE 1
+#define IR_MODE 2
+
 
 class testApp : public ofBaseApp{
+
+	int mode;
 
     string dataTrainingFilename;
 
@@ -29,6 +34,7 @@ class testApp : public ofBaseApp{
 	public:
 
         void setTrainingDataFilename(char* filename);
+        void switchMode();
 
 		void setup();
 		void update();

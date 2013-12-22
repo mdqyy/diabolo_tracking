@@ -5,6 +5,8 @@ void testApp::setup(){
 
     ofSetFrameRate(60);
 
+    mode = COLOR_MODE;
+
     tracked = false;
     x = 0;
     y = 0;
@@ -26,18 +28,25 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    tracked = color_tracking.update(&x, &y);
-    if(tracked){
-        oc.sendPosition(x, y);
-        gr.update(x, y);
+    if(mode == COLOR_MODE){
+        tracked = color_tracking.update(&x, &y);
+        if(tracked){
+            oc.sendPosition(x, y);
+            gr.update(x, y);
+        }   
     }
     //wm.getIRData();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    color_tracking.draw();
-    gr.draw();
+    if(mode == COLOR_MODE){
+        color_tracking.draw();
+        gr.draw();       
+    }
+    else{
+        ir_tracking.draw(0, 0, 480, 640);        
+    }
 // Wiiosc
     /*infoWiimote = "Receiving data from the Wiimote : ";
     if(oc.hasMessage()){
@@ -55,7 +64,8 @@ void testApp::draw(){
         infoWiimote += "NO";
     }
     ofDrawBitmapString(infoWiimote, 20, 700);*/
-    ir_tracking.draw(500, 320, 640, 480);
+
+
 }
 
 //--------------------------------------------------------------
@@ -91,6 +101,9 @@ void testApp::keyReleased(int key){
             break;
         case 'f':
             ofToggleFullscreen();
+            break;
+        case 59:
+            switchMode();
             break;
         default:
             break;
@@ -136,4 +149,13 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::setTrainingDataFilename(char* filename){
     gr.setTrainingDataFilename(filename);
+}
+
+void testApp::switchMode(){
+    if(mode == COLOR_MODE){
+        mode = IR_MODE;
+    }
+    else{
+        mode = COLOR_MODE;
+    }
 }

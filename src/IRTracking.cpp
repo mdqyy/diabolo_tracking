@@ -49,7 +49,7 @@ void IRTracking::draw(int x, int y, int h, int w){
 		cwiid_ir_mesg ir_msg;
 		ir_msg = wm.getIRData();
 		if(ir_msg.src[j].valid == 1){
-			ofCircle(x + ir_msg.src[j].pos[0] * w / CWIID_IR_X_MAX, y + ir_msg.src[j].pos[1] * h / CWIID_IR_Y_MAX, 5);			
+			ofCircle(x + ir_msg.src[j].pos[0] * w / CWIID_IR_X_MAX, y + h - ir_msg.src[j].pos[1] * h / CWIID_IR_Y_MAX, 5);			
 		}
 	}
 }
