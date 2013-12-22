@@ -21,8 +21,6 @@ void testApp::setup(){
     color_tracking.setup();
     //IR tracking setup
     ir_tracking.setup();
-    //Wiimote setup
-
 
 }
 
@@ -42,11 +40,11 @@ void testApp::update(){
             gr.update(x*640, (1 - y)*480);
         }
     }
-    //wm.getIRData();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    ofBackground(39, 40, 34);
     if(mode == COLOR_MODE){
         color_tracking.draw();
         gr.draw(0, 0, 240, 320);       

@@ -40,7 +40,7 @@ void IRTracking::draw(int x, int y, int h, int w){
     ofFill();
     ofRect(x, y, w, h);
 
-    ofSetColor(230, 150, 150);
+    ofSetColor(230, 230, 230);
 	/*for (vector<trackPoint>::iterator it = trackPoints.begin() ; it != trackPoints.end(); ++it){
 		ofCircle(x + ((*it).x)*320, y + ((*it).y)*240, 3);
 		cout <<  "x " << (*it).x << " y " << (*it).y << endl;

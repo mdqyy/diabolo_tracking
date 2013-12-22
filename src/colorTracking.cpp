@@ -96,7 +96,6 @@ be represented by certain hue ranges. hues from 4 to 21 are redish while 109 to 
 }
 
 void colorTracking::draw(){
-    ofBackground(100,100,100);             //make a NYC style gray background
 
     ofSetHexColor(0xffffff);                  //set a white color as the setColor
     vidGrabber.draw(0,0);                  //draw our video for reference/viewing pleasure
@@ -122,11 +121,11 @@ void colorTracking::draw(){
         traceX.insert(traceX.begin(), xj);
         traceY.insert(traceY.begin(), yj);
 
-        char tempStr1[255];
+        //char tempStr1[255];
         //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
-        sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
+        //sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
 
-        ofDrawBitmapString(tempStr1, 20, 250); //draw the string
+        //ofDrawBitmapString(tempStr1, 20, 250); //draw the string
     }
 
     ofSetColor(0);
