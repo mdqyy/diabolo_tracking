@@ -77,7 +77,7 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
 
     switch( key ){
-        cout << key << endl;
+        
         case 'j':
             color_tracking.toggleJitter();
             break;
