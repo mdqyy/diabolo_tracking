@@ -15,7 +15,7 @@ class gestureRecognition {
 	public:
 		void setup();
 		void update(float x, float y);
-		void draw();
+		void draw(int x, int y, int h, int w);
 		void recordGesture();
 		void decreaseClassLabel();
 		void increaseClassLabel();

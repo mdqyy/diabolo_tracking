@@ -53,3 +53,15 @@ void IRTracking::draw(int x, int y, int h, int w){
 		}
 	}
 }
+
+bool IRTracking::getDiaboloPosition(float *x, float *y){
+	cwiid_ir_mesg ir_msg;
+	ir_msg = wm.getIRData();
+	if(ir_msg.src[0].valid == 1){
+		*x = (float) ir_msg.src[0].pos[0] / CWIID_IR_X_MAX;
+		*y = (float) ir_msg.src[0].pos[1] / CWIID_IR_Y_MAX;
+		return true;
+	}
+	return false;
+
+}

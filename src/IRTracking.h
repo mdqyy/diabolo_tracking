@@ -21,5 +21,6 @@ class IRTracking {
 
 		void setup();
 		void draw(int x, int y, int h, int w);
+		bool getDiaboloPosition(float *x, float *y);
 
 };

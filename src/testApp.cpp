@@ -35,6 +35,13 @@ void testApp::update(){
             gr.update(x, y);
         }   
     }
+    else{
+        tracked = ir_tracking.getDiaboloPosition(&x, &y);
+        if(tracked){
+            oc.sendPosition(x, y);
+            gr.update(x*640, (1 - y)*480);
+        }
+    }
     //wm.getIRData();
 }
 
@@ -42,10 +49,11 @@ void testApp::update(){
 void testApp::draw(){
     if(mode == COLOR_MODE){
         color_tracking.draw();
-        gr.draw();       
+        gr.draw(0, 0, 240, 320);       
     }
     else{
-        ir_tracking.draw(0, 0, 480, 640);        
+        ir_tracking.draw(0, 0, 480, 640);
+        gr.draw(0, 0, 480, 640);        
     }
 // Wiiosc
     /*infoWiimote = "Receiving data from the Wiimote : ";
@@ -77,7 +85,7 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
 
     switch( key ){
-        
+
         case 'j':
             color_tracking.toggleJitter();
             break;

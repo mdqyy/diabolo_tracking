@@ -60,10 +60,10 @@ void gestureRecognition::update(float x, float y){
 	}
 }
 
-void gestureRecognition::draw(){
+void gestureRecognition::draw(int x, int y, int h, int w){
     string text;
     int textX = 20;
-    int textY = 320;
+    int textY = h + 20;
 
     //Draw the training info
     ofSetColor(255, 255, 255);
