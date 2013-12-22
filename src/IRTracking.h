@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "wiimoteController.h"
 
 class trackPoint {
 	public:
@@ -14,11 +15,11 @@ class trackPoint {
 class IRTracking {
 
 	vector<trackPoint> trackPoints;
+	wiimoteController wm;
 
 	public:
 
 		void setup();
-		void newIRMessage(ofxOscMessage msg);
-		void draw(int x, int y);
+		void draw(int x, int y, int h, int w);
 
 };

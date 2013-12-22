@@ -19,6 +19,8 @@ void testApp::setup(){
     color_tracking.setup();
     //IR tracking setup
     ir_tracking.setup();
+    //Wiimote setup
+
 
 }
 
@@ -29,20 +31,31 @@ void testApp::update(){
         oc.sendPosition(x, y);
         gr.update(x, y);
     }
+    //wm.getIRData();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     color_tracking.draw();
     gr.draw();
+// Wiiosc
+    /*infoWiimote = "Receiving data from the Wiimote : ";
     if(oc.hasMessage()){
+        infoWiimote += "YES";
         ofxOscMessage message;
         oc.nextMessage(&message);
         if(message.getAddress() == "/wii/ir/x" || message.getAddress() == "/wii/ir/y"){
             ir_tracking.newIRMessage(message);            
         }
+        else{
+            infoWiimote += " (No IR data)";
+        }
     }
-    ir_tracking.draw(320, 320);
+    else{
+        infoWiimote += "NO";
+    }
+    ofDrawBitmapString(infoWiimote, 20, 700);*/
+    ir_tracking.draw(500, 320, 640, 480);
 }
 
 //--------------------------------------------------------------

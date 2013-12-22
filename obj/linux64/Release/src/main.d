@@ -573,7 +573,8 @@ obj/linux64/Release/src/main.o: src/main.cpp \
  ../../../addons/ofxOpenCv/src/ofxCvFloatImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvShortImage.h \
  ../../../addons/ofxOpenCv/src/ofxCvContourFinder.h \
- ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h src/IRTracking.h
+ ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h src/IRTracking.h \
+ src/wiimoteController.h
 
 ../../../libs/openFrameworks/ofMain.h:
 
@@ -1812,3 +1813,5 @@ src/colorTracking.h:
 ../../../addons/ofxOpenCv/src/ofxCvHaarFinder.h:
 
 src/IRTracking.h:
+
+src/wiimoteController.h:
