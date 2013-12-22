@@ -11,6 +11,9 @@ void testApp::setup(){
     x = 0;
     y = 0;
 
+    width = 640;
+    height = 480;
+
     infoText = "";
 
     //Gesture recognition setup
@@ -18,7 +21,7 @@ void testApp::setup(){
     //OSC communication setup
     oc.setup();
     //Tracking setup
-    color_tracking.setup();
+    color_tracking.setup(width, height);
     //IR tracking setup
     ir_tracking.setup();
 
@@ -47,11 +50,11 @@ void testApp::draw(){
     ofBackground(39, 40, 34);
     if(mode == COLOR_MODE){
         color_tracking.draw();
-        gr.draw(0, 0, 240, 320);       
+        gr.draw(0, 0, height, width);       
     }
     else{
         ir_tracking.draw(0, 0, 480, 640);
-        gr.draw(0, 0, 480, 640);        
+        gr.draw(0, 0, height, width);        
     }
 // Wiiosc
     /*infoWiimote = "Receiving data from the Wiimote : ";
@@ -164,4 +167,8 @@ void testApp::switchMode(){
     else{
         mode = COLOR_MODE;
     }
+}
+
+void testApp::exit(){
+    color_tracking.stopVideo();
 }

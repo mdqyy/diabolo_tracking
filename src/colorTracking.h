@@ -50,12 +50,15 @@ class colorTracking {
 
     string infoText;
 
+    bool colorSelected;
+
 	public:
 
-		void setup();
+		void setup(int width, int height);
 		bool update(float* x, float* y);
 		void draw();
 		void selectColor(int x, int y);
         void setJitter(bool s);
         void toggleJitter();
+        void stopVideo();
 };

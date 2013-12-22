@@ -25,6 +25,9 @@ class testApp : public ofBaseApp{
     float x;
     float y;
 
+    int width;
+    int height;
+
     gestureRecognition gr;
     OSCCommunication oc;
     colorTracking color_tracking;
@@ -39,6 +42,7 @@ class testApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);

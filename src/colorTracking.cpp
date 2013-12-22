@@ -2,13 +2,14 @@
 #include "ofxOpenCv.h"
 #include "colorTracking.h"
 
-void colorTracking::setup(){
+void colorTracking::setup(int width, int height){
+    colorSelected = false;
     traceLength = 20;
 
     one.pos = ofVec2f(0,0);
 
-    camWidth 		= 320;	// try to grab at this size.
-    camHeight 		= 240;
+    camWidth 		= width;	// try to grab at this size.
+    camHeight 		= height;
 
     colorImg.allocate(camWidth,camHeight);      //Image that will house the cameras output, used because of laziness
 
@@ -101,45 +102,47 @@ void colorTracking::draw(){
     vidGrabber.draw(0,0);                  //draw our video for reference/viewing pleasure
 	//colorImgHSV.draw(340, 0);
 
-    //trackedTextureRed.draw(20, 300);       //draw everything that was found
-    trackedTextureRed.draw(320, 0);
-    //ofDrawBitmapString("red",20, 280);     //label
-    finderRed.draw();                      //draw our contour tracker over the video
-
-    //glPushMatrix();                        //start a new openGL stack
-	//glTranslatef(20,300,0);            //translate lower a bit
-	//finderRed.draw();                  //draw the contour tracker over the trackedTextureRed
-    //glPopMatrix();                         //end the stack
-
-    if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
-
-        if(traceX.size() > traceLength){
-            traceX.pop_back();
-            traceY.pop_back();
-        }
-
-        traceX.insert(traceX.begin(), xj);
-        traceY.insert(traceY.begin(), yj);
-
-        //char tempStr1[255];
-        //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
-        //sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
-
-        //ofDrawBitmapString(tempStr1, 20, 250); //draw the string
-    }
-
     ofSetColor(0);
     ofFill();
-    ofRect(camWidth,0,camWidth,camHeight);
+    ofRect(camWidth, 0, camWidth, camHeight);
 
-    ofSetColor(255);
-    ofNoFill();
+    if(colorSelected){
+        //trackedTextureRed.draw(20, 300);       //draw everything that was found
+        //trackedTextureRed.draw(camWidth, 0);
+        //ofDrawBitmapString("red",20, 280);     //label
+        finderRed.draw();                      //draw our contour tracker over the video
 
-    ofBeginShape();
-    for (unsigned i = 0; i < traceX.size(); ++i){
-        ofCurveVertex(traceX.at(i)+camWidth, traceY.at(i));
+        //glPushMatrix();                        //start a new openGL stack
+    	//glTranslatef(20,300,0);            //translate lower a bit
+    	//finderRed.draw();                  //draw the contour tracker over the trackedTextureRed
+        //glPopMatrix();                         //end the stack
+
+        if(finderRed.blobs.size() > 0) {       //if the blob exists then state it's x and y
+
+            if(traceX.size() > traceLength){
+                traceX.pop_back();
+                traceY.pop_back();
+            }
+
+            traceX.insert(traceX.begin(), xj);
+            traceY.insert(traceY.begin(), yj);
+
+            //char tempStr1[255];
+            //sprintf(tempStr1, "x : %f\ny : %f", finderRed.blobs[0].centroid.x, finderRed.blobs[0].centroid.y);
+            //sprintf(tempStr1, "xj : %f\nyj : %f", xj, yj);
+
+            //ofDrawBitmapString(tempStr1, 20, 250); //draw the string
+        }
+
+        ofSetColor(255);
+        ofNoFill();
+
+        ofBeginShape();
+        for (unsigned i = 0; i < traceX.size(); ++i){
+            ofCurveVertex(traceX.at(i)+camWidth, traceY.at(i));
+        }
+        ofEndShape();
     }
-    ofEndShape();
 }
 
 void colorTracking::selectColor(int x, int y){
@@ -160,6 +163,8 @@ void colorTracking::selectColor(int x, int y){
         one.sat = satPixels[x+(y*satImg.width)];  //set the sat
         /*one.bri = briPixels[x+(y*briImg.width)];*/
 
+    colorSelected = true;
+
 }
 
 void colorTracking::setJitter(bool s){
@@ -175,4 +180,8 @@ void colorTracking::toggleJitter(){
         setJitter(true);
         infoText = "Jitter enabled";
     }
+}
+
+void colorTracking::stopVideo(){
+    vidGrabber.close();
 }
